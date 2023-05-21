@@ -15,7 +15,6 @@ class MenuHome extends StatefulWidget {
 
 class _MenuHomeState extends State<MenuHome> {
   File? imageFile;
-
   final user =  FirebaseAuth.instance.currentUser;
   String imageUrl = "https://firebasestorage.googleapis.com/v0/b/login-9f81c.appspot.com/o/PhotoShot_1682591283745.jpg?alt=media&token=c3dc007b-962b-4aac-933c-a1593848cfe1";
   @override

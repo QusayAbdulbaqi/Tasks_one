@@ -44,6 +44,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
       password: _passwordController.text.trim(),);
 
 
+
     Navigator.of(context).pushNamed('HomeTaskScreen');
   }
   void OpenSignupScreen() {
@@ -60,7 +61,6 @@ class _ScreenLoginState extends State<ScreenLogin> {
   bool showSpinner = false;
  final formKey = GlobalKey<FormState>();
   final user =  FirebaseAuth.instance.currentUser;
-  NotificationServices notificationServices = NotificationServices();
 
   @override
   Widget build(BuildContext context) {
@@ -148,35 +148,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                         padding: EdgeInsets.symmetric(horizontal: 25),
                         child: GestureDetector(
                           onTap: () {
-                            notificationServices.getDeviceToken().then((value)async{
 
-                              var data = {
-                                'to': value.toString(),
-                                'notification': {
-                                  'title': _emailController,
-                                  'body': 'Hello',
-                                }
-                              };
-
-
-                              TextEditingController myController = TextEditingController();
-                              String myText = myController.text;
-
-                              Map<String, dynamic> myBody = {
-                                'message': myText,
-                              };
-
-                              http.Response response = await http.post(
-                                Uri.parse('https://fcm.googleapis.com/fcm/send'),
-                                body: jsonEncode(myBody),
-                                headers: {
-                                  'Content-Type': 'application/json; charset=UTF-8',
-                                  'Authorization': 'AAAAyIGXtII:APA91bG0Le1fOg66HOCkWETbP1S-BpVZgK0KwSjhYgZNpC3EeW9iDqeo_DfJxUqK4POZIrGPkYznUoj2w3x3ei2Zs8tu0cvo2np-Ywh8eFIpUILYrt34fIAnJUVg8XaF-SmXS12dl89b',
-                                },
-                              );
-
-
-                            });
                             if (formKey.currentState!.validate()) {
                               print(_emailController.text);
                               print(_passwordController.text);

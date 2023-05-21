@@ -4,10 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:login/controllers/notifications/notifications.dart';
 import 'package:login/views/MenuHome/menu_home.dart';
 import '../system/database_manger.dart';
-import 'package:http/http.dart' as http;
 
 class HomeTaskScreen extends StatefulWidget {
   const HomeTaskScreen({Key? key}) : super(key: key);
@@ -17,7 +15,6 @@ class HomeTaskScreen extends StatefulWidget {
 }
 
 class _HomeTaskScreenState extends State<HomeTaskScreen> {
-  NotificationServices notificationServices = NotificationServices();
 
 
   List<Map<String, dynamic>> _allData = [];
@@ -42,10 +39,6 @@ class _HomeTaskScreenState extends State<HomeTaskScreen> {
       print("========================================================================");
       print(token);
       print("=============================================================================");
-     // notificationServices.setupInteractMessage(context);
-      notificationServices.getDeviceToken().then((value){
-
-      });
     });
 
     _refreshData();

@@ -1,9 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:login/controllers/notifications/notifications.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,12 +16,20 @@ class ProfileScreen extends StatefulWidget {
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
+NotificationServices notificationServices = NotificationServices();
+
+
+
+
+
+
 File? imageFile;
 final _nameController = TextEditingController();
 final _emailController = TextEditingController();
 final _passwordController = TextEditingController();
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
 
   _showOption(BuildContext context){
     return showDialog(context:context,
@@ -269,7 +279,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'displayName': _nameController.text,
       'email': _emailController.text,
       'photoUrl': imageUrl,
+
       });
+
       Navigator.of(context).pop();
 
       }
